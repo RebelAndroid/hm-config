@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #nix-flatpak = {
     #  url = "github:gmodena/nix-flatpak/?ref=v0.5.2";
     #};
@@ -17,6 +21,7 @@
   outputs = {
     nixpkgs,
     home-manager,
+    nixgl,
     ...
   } @ attrs: let
     system = "x86_64-linux";
@@ -27,6 +32,7 @@
         builtins.elem (nixpkgs.lib.getName pkg) [
         ];
       overlays = [
+        nixgl.overlay
       ];
     };
   in {
@@ -34,11 +40,17 @@
       inherit pkgs;
       extraSpecialArgs = attrs;
       modules = [
-        ./programs
-        # nix-index-database.hmModules.nix-index
         {home.username = "christopher";}
-        {home.stateVersion = "24.05";}
         {home.homeDirectory = "/home/christopher";}
+
+        ./programs
+        ./fonts.nix
+        
+        # As we are commanded
+        {home.stateVersion = "24.05";}
+        
+        # The "Intel" packages are used for any mesa driver (like the one for my AMD GPU)
+        {home.packages = [pkgs.nixgl.nixGLIntel pkgs.nixgl.nixVulkanIntel];}
       ];
     };
   };

@@ -26,8 +26,11 @@ yellow = "#ffffb6"
 background = "#191919"
 foreground = "#eeeeee"
 
+[font]
+size = 12
 [font.normal]
 family = "JetBrains Mono NL"
 
-[shell]
-program = "/usr/bin/fish"
+
+[terminal.shell]
+program = ".nix-profile/bin/fish"

@@ -10,6 +10,7 @@
     fzf
     fastfetch
     restic
+    rclone
   ];
 
   programs.zoxide = {

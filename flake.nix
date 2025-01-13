@@ -36,6 +36,7 @@
       ];
     };
   in {
+    # main user account
     homeConfigurations."christopher" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = attrs;
@@ -44,13 +45,33 @@
         {home.homeDirectory = "/home/christopher";}
 
         ./programs
+        ./programs/cli.nix
+        ./programs/gui.nix
         ./fonts.nix
-        
+
         # As we are commanded
         {home.stateVersion = "24.05";}
-        
+
         # The "Intel" packages are used for any mesa driver (like the one for my AMD GPU)
         {home.packages = [pkgs.nixgl.nixGLIntel pkgs.nixgl.nixVulkanIntel];}
+      ];
+    };
+
+    # headless useraccount for server
+    homeConfigurations."admin" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = attrs;
+      modules = [
+        {home.username = "admin";}
+        {home.homeDirectory = "/home/admin";}
+
+        ./programs
+        ./programs/cli.nix
+        ./programs/gui.nix
+        ./fonts.nix
+
+        # As we are commanded
+        {home.stateVersion = "24.05";}
       ];
     };
   };

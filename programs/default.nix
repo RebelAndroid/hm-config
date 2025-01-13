@@ -18,8 +18,6 @@
     imv
     mpv
     ripgrep
-    kitty
-    krita
   ];
 
   xdg.configFile."alacritty/alacritty.toml".source = ../dotfiles/alacritty.toml;
@@ -29,6 +27,10 @@
     shellAliases = {
       "g" = "git";
       "gs" = "git status";
+      "mv" = "mv -i";
+      "imv" = "nixGLIntel imv";
+      "mpv" = "nixGLIntel imv";
+      "ls" = "eza";
     };
     plugins = [
 
@@ -36,5 +38,10 @@
     functions = {
 
     };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
   };
 }

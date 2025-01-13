@@ -67,9 +67,6 @@
 
         ./programs
         ./programs/cli.nix
-        ./programs/gui.nix
-        ./fonts.nix
-
         # As we are commanded
         {home.stateVersion = "24.05";}
       ];

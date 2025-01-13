@@ -10,6 +10,7 @@
     tree
     eza
     ripgrep
+    syncthing
   ];
 
   programs.fish = {

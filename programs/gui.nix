@@ -12,6 +12,6 @@
 
   programs.fish.shellAliases = {
     "imv" = "nixGLIntel imv";
-    "mpv" = "nixGLIntel imv";
+    "mpv" = "nixGLIntel mpv";
   };
 }

@@ -10,7 +10,8 @@
     tree
     eza
     ripgrep
-    syncthing
+    fd
+    fzf
   ];
 
   programs.fish = {
@@ -24,5 +25,8 @@
     ];
     functions = {
     };
+  };
+  home.sessionVariables = {
+    FZF_DEFAULT_COMMAND = "fd";
   };
 }

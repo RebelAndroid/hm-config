@@ -7,10 +7,7 @@
     tmsu
     unipicker
     alejandra
-    fzf
     fastfetch
-    restic
-    rclone
   ];
 
   programs.zoxide = {

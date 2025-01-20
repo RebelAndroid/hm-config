@@ -8,6 +8,7 @@
     unipicker
     alejandra
     fastfetch
+    restic
   ];
 
   programs.zoxide = {

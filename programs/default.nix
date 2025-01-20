@@ -20,6 +20,7 @@
       "g" = "git";
       "gs" = "git status";
       "mv" = "mv -i";
+      "ls" = "eza -l";
     };
     plugins = [
     ];

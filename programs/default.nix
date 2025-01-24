@@ -12,6 +12,7 @@
     ripgrep
     fd
     fzf
+    unison
   ];
 
   programs.fish = {

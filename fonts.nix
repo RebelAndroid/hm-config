@@ -6,7 +6,7 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     oxygenfonts
-    jetbrains-mono
+    nerd-fonts.jetbrains-mono
     noto-fonts
   ];
 }

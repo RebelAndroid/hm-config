@@ -21,7 +21,7 @@
       "g" = "git";
       "gs" = "git status";
       "mv" = "mv -i";
-      "ls" = "eza -l";
+      "ls" = "eza -l --time-style=long-iso --icons=always";
     };
     plugins = [
     ];

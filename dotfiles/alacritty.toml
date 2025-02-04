@@ -29,8 +29,7 @@ foreground = "#eeeeee"
 [font]
 size = 12
 [font.normal]
-family = "JetBrains Mono NL"
-
+family = "JetBrains Mono NL Nerd Font"
 
 [terminal.shell]
 program = ".nix-profile/bin/fish"

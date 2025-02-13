@@ -49,6 +49,8 @@
         ./programs/gui.nix
         ./fonts.nix
 
+        ./programs/gammastep.nix
+
         # As we are commanded
         {home.stateVersion = "24.05";}
 

@@ -32,4 +32,4 @@ size = 12
 family = "JetBrains Mono NL Nerd Font"
 
 [terminal.shell]
-program = "fish"
+program = "/home/christopher/.nix-profile/bin/fish"

@@ -36,4 +36,5 @@
   home.sessionVariables = {
     FZF_DEFAULT_COMMAND = "fd";
   };
+
 }

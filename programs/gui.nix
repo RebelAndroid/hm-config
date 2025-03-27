@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     imv
     mpv
-    
+    sway
   ];
 
   xdg.configFile."alacritty/alacritty.toml".source = ../dotfiles/alacritty.toml;

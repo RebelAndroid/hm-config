@@ -9,7 +9,7 @@ set $up k
 set $right l
 
 set $term alacritty
-set $menu tofi-drun | xargs swaymsg exec --
+set $menu rofi -show drun
 set $screenshot shotman --capture region
 
 ### Output configuration

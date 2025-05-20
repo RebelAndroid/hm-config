@@ -20,19 +20,19 @@
     nix-direnv.enable = true;
   };
 
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      "g" = "git";
-      "gs" = "git status";
-      "mv" = "mv -i";
-      "ls" = "eza -l --time-style=long-iso --icons=always";
-    };
-    plugins = [
-    ];
-    functions = {
-    };
-  };
+  #programs.fish = {
+  #  enable = true;
+  #  shellAliases = {
+  #    "g" = "git";
+  #    "gs" = "git status";
+  #    "mv" = "mv -i";
+  #    "ls" = "eza -l --time-style=long-iso --icons=always";
+  #  };
+  #  plugins = [
+  #  ];
+  #  functions = {
+  #  };
+  #};
   home.sessionVariables = {
     FZF_DEFAULT_COMMAND = "fd";
   };

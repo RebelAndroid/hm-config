@@ -9,6 +9,7 @@
     alejandra
     fastfetch
     restic
+    gh
   ];
 
   programs.zoxide = {

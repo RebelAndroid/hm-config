@@ -171,6 +171,6 @@ bar {
     }
 }
 
-exec gammastep
+exec export XDG_CURRENT_DESKTOP=sway
 
-include @sysconfdir@/sway/config.d/*
+include /etc/sway/config.d/*

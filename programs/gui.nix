@@ -7,6 +7,7 @@
     imv
     mpv
     keepassxc
+    vscodium
   ];
 
   xdg.configFile."alacritty/alacritty.toml".source = ../dotfiles/alacritty.toml;
@@ -19,10 +20,4 @@
   xdg.configFile."rofi/theme.rasi".source = ../dotfiles/theme.rasi;
 
   xdg.configFile."fish/config.fish".source = ../dotfiles/config.fish;
-
-  programs.fish.shellAliases = {
-    "imv" = "nixGLIntel imv";
-    "mpv" = "nixGLIntel mpv";
-    #"alacritty" = "nixGLIntel alacritty";
-  };
 }

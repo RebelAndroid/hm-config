@@ -11,9 +11,4 @@
     restic
     gh
   ];
-
-  programs.zoxide = {
-    enable = true;
-    enableFishIntegration = true;
-  };
 }

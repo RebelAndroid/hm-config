@@ -8,5 +8,3 @@ alias mpv 'nixGLIntel mpv'
 zoxide init fish | source
 
 direnv hook fish | source
-
-zi

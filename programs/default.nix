@@ -4,22 +4,18 @@
   ...
 }: {
   home.packages = with pkgs; [
-    file
-    bottom
-    du-dust
-    tree
-    eza
-    ripgrep
-    fd
-    fzf
-    unison
+    file # detects file types
+    bottom # resource monitor
+    du-dust # shows disk usage
+    tree # displays directory trees
+    eza # ls replacement
+    ripgrep # grep replacement
+    fd # find replacement
+    fzf # fuzzy finder
+    tmsu # tagging system
   ];
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-
+  # cd replacement
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;

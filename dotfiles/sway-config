@@ -32,10 +32,13 @@ bindsym $mod+Return exec $term
 # Kill focused window
 bindsym $mod+q kill
 
-# Start your launcher
+# Start launcher
 bindsym --release Super_L  exec $menu
 
 bindsym $mod+s exec $screenshot
+
+bindsym $mod+x exec swaynag -m Logout? -B Yes "swaymsg exit"
+bindsym $mod+Shift+x exec swaynag -m Shutdown? -B Yes "systemctl poweroff"
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -170,7 +173,5 @@ bar {
         inactive_workspace #4f4f4f #4f4f4f #bbbbbb
     }
 }
-
-exec export XDG_CURRENT_DESKTOP=sway
 
 include /etc/sway/config.d/*

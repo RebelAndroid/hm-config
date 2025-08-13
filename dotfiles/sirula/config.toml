@@ -1,0 +1,49 @@
+
+exclusive = true # push all windows aside or appear above existing windows
+icon_size = 48
+lines = 1 # maximum number of lines in app labels
+
+markup_default = '' # markup for app labels
+markup_highlight = 'underline="low" weight="bold"' # markup for matched characters in app labels
+markup_extra = 'font_style="italic" font_size="smaller"' # markup for extra information in app labels
+
+# anchor window to screen edge
+anchor_left = false
+anchor_right = false
+anchor_top = false
+anchor_bottom = false
+
+# margin of window to screen edge (I think this is in pixels)
+#margin_top = 0
+#margin_bottom = 0
+#margin_left = 0
+#margin_right = 0
+
+# size of window
+width = 1200
+height = 800
+
+#close_on_unfocus = true
+
+#extra_field = ["id"]
+#extra_field_newline = false
+#hide_extra_if_contained = true # hide extra field if it is contained in the app name
+
+#hidden_fields = [] # fields considered for search but hidden
+
+#exclude = [] # list of regexes for excluded app ids (name of .desktop file)
+
+# launch apps in cgroups with systemd
+#cgroups = true
+
+command_prefix = "`" # prefix for running commands ("" disables command running)
+
+#frequent_first = false # put more frequent matches first (secondary to match quality)
+#recent_first = true # put more recent matches first (secondary to match quality)
+
+#prune_history = 0 # remove history items older than this many days (0 never removes)
+
+#term_command = "$TERMINAL -e"
+
+[name_overrides]
+

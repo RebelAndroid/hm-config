@@ -1,35 +1,38 @@
 .app-row {
     transition: unset;
     padding: 5px 0 5px 10px;
-    background-color: #263238;
+    background-color: transparent;
+    color: white;
 }
 
 .app-row:selected {
-    background-color: #37474F;
+    color: #cb8aff;
 }
 
 .app-label {
     margin-left: 10px;
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 300;
+    
 }
 
-.app-list {
-    background-color: #f00;
+#app-list {
+    background-color: #191919;
  }
 
 #root-box {
-    border: 3px solid #263238;
+    border: 3px solid #7e00c8;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     margin: 100px;
-    background-color: #263238;
+    background-color: #870cd2;
 }
 
 #search {
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 24px;
     padding: 2px 8px;
     margin: 5px;
+    background-color: #eeeeee;
 }

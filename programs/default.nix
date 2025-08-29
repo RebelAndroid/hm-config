@@ -22,6 +22,7 @@
     keepassxc # password manager
     vscodium # IDE
     gnome-calendar # calendar
+    devenv # easy development environments
     pkgs.nixgl.nixGLIntel
     pkgs.nixgl.nixVulkanIntel
   ];

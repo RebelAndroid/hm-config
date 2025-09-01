@@ -31,11 +31,5 @@
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
-  };
-  
-  # This doesn't work and I don't know why. As far as I can tell the file gets created in the nix store, but is never linked to
-  xdg.desktopEntries."keepassxc" = {
-    exec = "keepassxc";
-    name = "keepassxc";
-  };
+  };  
 }

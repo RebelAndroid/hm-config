@@ -23,6 +23,7 @@
     vscodium # IDE
     gnome-calendar # calendar
     devenv # easy development environments
+    xournalpp # note taking
     pkgs.nixgl.nixGLIntel
     pkgs.nixgl.nixVulkanIntel
   ];

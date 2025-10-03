@@ -62,5 +62,29 @@
         {home.packages = [pkgs.nixgl.nixGLIntel pkgs.nixgl.nixVulkanIntel];}
       ];
     };
+
+    homeConfigurations."christopher@fedora" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = attrs;
+      modules = [
+        {home.username = "christopher";}
+        {home.homeDirectory = "/home/christopher";}
+        ./programs
+        ./dotfiles
+        
+        ./fonts.nix
+
+        {
+          programs.direnv = {
+            enable = true;
+            nix-direnv.enable = true;
+          };
+        }
+
+        {home.stateVersion = "24.05";}
+        # The "Intel" packages are used for any mesa driver (like the one for my AMD GPU)
+        {home.packages = [pkgs.nixgl.nixGLIntel pkgs.nixgl.nixVulkanIntel];}
+      ];
+    };
   };
 }

@@ -13,27 +13,42 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nix-flatpak = {
-    #  url = "github:gmodena/nix-flatpak/?ref=v0.5.2";
-    #};
+    jail-nix.url = "sourcehut:~alexdavid/jail.nix";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     nixgl,
+    jail-nix,
     ...
   } @ attrs: let
     system = "x86_64-linux";
+    jail = jail-nix.lib.init pkgs;
+    jailOverlay = final: prev:
+      jail-nix.lib.mkOverlay {
+        inherit final prev;
+        packages = combinators:
+          with combinators; {
+            #fastfetch = [network gpu (try-readonly "/etc/os-release") 
+            #(try-readonly "/usr/share/icons/default/index.theme") 
+            #(try-readonly "/sys/class/power_supply") 
+            #(try-readonly "/sys/devices/virtual/dmi/id") 
+            #(try-readonly "/usr/share/rpm") 
+            #(try-readonly "/var/home/admin/.nix-profile")
+            #(try-readwrite "/var/home/admin/.cache/fastfetch")
+            #(try-fwd-env "SWAYSOCK")
+            #];
+            tree = [(add-runtime ''RUNTIME_ARGS+=(--ro-bind "$(pwd)" "$(pwd)")'')];
+            eza = [(add-runtime ''RUNTIME_ARGS+=(--ro-bind "$(pwd)" "$(pwd)")'')];
+          };
+      };
     pkgs = import nixpkgs {
       inherit system;
-
       config.allowUnfreePredicate = pkg:
         builtins.elem (nixpkgs.lib.getName pkg) [
         ];
-      overlays = [
-        nixgl.overlay
-      ];
+      overlays = [jailOverlay nixgl.overlay];
     };
   in {
     # minimal account used for system configuration
@@ -45,10 +60,10 @@
         {home.homeDirectory = "/var/home/admin";}
         ./programs
         ./dotfiles
-        
+
         ./fonts.nix
-        
-        { xdg.configFile."sway/hw-config".source = ./dotfiles/sway-config-desktop; }
+
+        {xdg.configFile."sway/hw-config".source = ./dotfiles/sway-config-desktop;}
 
         {
           programs.direnv = {
@@ -71,7 +86,7 @@
         {home.homeDirectory = "/home/christopher";}
         ./programs
         ./dotfiles
-        
+
         ./fonts.nix
 
         {

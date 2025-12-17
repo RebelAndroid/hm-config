@@ -4,6 +4,8 @@
   ...
 }: {
   home.packages = with pkgs; [
+    landrun
+    strace
     file # detects file types
     bottom # resource monitor
     dust # shows disk usage

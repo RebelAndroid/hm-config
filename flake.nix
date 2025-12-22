@@ -30,17 +30,53 @@
         inherit final prev;
         packages = combinators:
           with combinators; {
-            #fastfetch = [network gpu (try-readonly "/etc/os-release") 
-            #(try-readonly "/usr/share/icons/default/index.theme") 
-            #(try-readonly "/sys/class/power_supply") 
-            #(try-readonly "/sys/devices/virtual/dmi/id") 
-            #(try-readonly "/usr/share/rpm") 
+            #fastfetch = [network gpu (try-readonly "/etc/os-release")
+            #(try-readonly "/usr/share/icons/default/index.theme")
+            #(try-readonly "/sys/class/power_supply")
+            #(try-readonly "/sys/devices/virtual/dmi/id")
+            #(try-readonly "/usr/share/rpm")
             #(try-readonly "/var/home/admin/.nix-profile")
             #(try-readwrite "/var/home/admin/.cache/fastfetch")
             #(try-fwd-env "SWAYSOCK")
             #];
-            tree = [(add-runtime ''RUNTIME_ARGS+=(--ro-bind "$(pwd)" "$(pwd)")'')];
-            eza = [(add-runtime ''RUNTIME_ARGS+=(--ro-bind "$(pwd)" "$(pwd)")'')];
+            tree = [
+              (add-runtime ''
+                added_path=false
+                for i in "$@"; do
+                  case $i in
+                   -*)
+                     ;;
+                   *)
+                     RUNTIME_ARGS+=(--ro-bind "$(pwd)/$i" "$(pwd)/$i");
+                     added_path=true
+                     ;;
+                  esac
+                done
+                if [ "$added_path" = false ]; then
+                  RUNTIME_ARGS+=(--ro-bind "$(pwd)" "$(pwd)");
+                fi
+                #echo "''${RUNTIME_ARGS[@]}"
+              '')
+            ];
+            eza = [
+              (add-runtime ''
+                added_path=false
+                for i in "$@"; do
+                  case $i in
+                   -*)
+                     ;;
+                   *)
+                     RUNTIME_ARGS+=(--ro-bind "$(pwd)/$i" "$(pwd)/$i");
+                     added_path=true
+                     ;;
+                  esac
+                done
+                if [ "$added_path" = false ]; then
+                  RUNTIME_ARGS+=(--ro-bind "$(pwd)" "$(pwd)");
+                fi
+                #echo "''${RUNTIME_ARGS[@]}"
+              '')
+            ];
           };
       };
     pkgs = import nixpkgs {

@@ -4,12 +4,10 @@
   ...
 }: {
   home.packages = with pkgs; [
-    landrun
-    strace
+    strace # syscall tracing
     file # detects file types
     bottom # resource monitor
     dust # shows disk usage
-    tree # displays directory trees
     eza # ls replacement
     ripgrep # grep replacement
     fd # find replacement

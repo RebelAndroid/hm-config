@@ -1,6 +1,6 @@
 ### Output configuration
-output HDMI-A-1 pos 0 0 res 1920x1080@100Hz
-output DP-2 pos 1920 0 res 1920x1080@74.986Hz
+output HDMI-A-1 pos 1920 0 res 1920x1080@100Hz
+output DP-3 pos 0 0 res 1920x1080@74.986Hz
 # both of my monitors have freesync
 output * adaptive_sync on
 

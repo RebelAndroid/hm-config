@@ -13,7 +13,9 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    jail-nix.url = "sourcehut:~alexdavid/jail.nix";
+    jail-nix = {
+      url = "sourcehut:~alexdavid/jail.nix";
+    };
   };
 
   outputs = {
@@ -30,51 +32,31 @@
         inherit final prev;
         packages = combinators:
           with combinators; {
-            #fastfetch = [network gpu (try-readonly "/etc/os-release")
-            #(try-readonly "/usr/share/icons/default/index.theme")
-            #(try-readonly "/sys/class/power_supply")
-            #(try-readonly "/sys/devices/virtual/dmi/id")
-            #(try-readonly "/usr/share/rpm")
-            #(try-readonly "/var/home/admin/.nix-profile")
-            #(try-readwrite "/var/home/admin/.cache/fastfetch")
-            #(try-fwd-env "SWAYSOCK")
-            #];
-            tree = [
-              (add-runtime ''
-                added_path=false
-                for i in "$@"; do
-                  case $i in
-                   -*)
-                     ;;
-                   *)
-                     RUNTIME_ARGS+=(--ro-bind "$(pwd)/$i" "$(pwd)/$i");
-                     added_path=true
-                     ;;
-                  esac
-                done
-                if [ "$added_path" = false ]; then
-                  RUNTIME_ARGS+=(--ro-bind "$(pwd)" "$(pwd)");
-                fi
-                #echo "''${RUNTIME_ARGS[@]}"
-              '')
-            ];
             eza = [
               (add-runtime ''
                 added_path=false
                 for i in "$@"; do
                   case $i in
+                  # options starting with "-", not relevant for permissions
                    -*)
                      ;;
+                  # absolute path
+                   /*)
+                     RUNTIME_ARGS+=(--ro-bind "$i" "$i");
+                     added_path=true
+                     ;;
+                  # relative path
                    *)
                      RUNTIME_ARGS+=(--ro-bind "$(pwd)/$i" "$(pwd)/$i");
                      added_path=true
                      ;;
                   esac
                 done
+                # if no files were given, ls lists files in the current directory so we add it
                 if [ "$added_path" = false ]; then
                   RUNTIME_ARGS+=(--ro-bind "$(pwd)" "$(pwd)");
                 fi
-                #echo "''${RUNTIME_ARGS[@]}"
+                echo "''${RUNTIME_ARGS[@]}"
               '')
             ];
           };
@@ -107,6 +89,7 @@
             nix-direnv.enable = true;
           };
         }
+        # {home.file."hello-world" = {text = ''hello world'';};}
 
         {home.stateVersion = "24.05";}
         # The "Intel" packages are used for any mesa driver (like the one for my AMD GPU)

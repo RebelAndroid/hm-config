@@ -33,7 +33,17 @@
         packages = combinators:
           with combinators; {
             eza = import ./wrappers/eza.nix {
-              combinators = combinators;
+              inherit combinators;
+            };
+            # I think this is broken because it is named "file"
+            # file = import ./wrappers/file.nix {
+              # combinators = combinators;
+            # };
+            bottom = import ./wrappers/bottom.nix {
+              inherit combinators;
+            };
+            dust = import ./wrappers/dust.nix {
+              inherit combinators;
             };
           };
       };

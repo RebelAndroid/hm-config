@@ -22,4 +22,3 @@ done
 if [ "$added_path" = false ]; then
     RUNTIME_ARGS+=(--ro-bind "$(pwd)" "$(pwd)");
 fi
-echo "${RUNTIME_ARGS[@]}"
